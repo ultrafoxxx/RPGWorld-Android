@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.holzhausen.rpgworld.R;
 import com.holzhausen.rpgworld.model.BasicTraitInfo;
+import com.holzhausen.rpgworld.viewmodel.CharacterCreationViewModel;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,13 +29,16 @@ public class BasicInfoElementAdapter extends RecyclerView.Adapter<BasicInfoEleme
 
     private final Context context;
 
-    public BasicInfoElementAdapter(Flowable<List<BasicTraitInfo>> flowable, Context context){
+    private final CharacterCreationViewModel viewModel;
+
+    public BasicInfoElementAdapter(CharacterCreationViewModel viewModel, Context context){
         this.basicTraitInfos = new LinkedList<>();
-        disposable = flowable.subscribe(items -> {
+        disposable = viewModel.getBasicTraitInfoSubjectOFlowable().subscribe(items -> {
             basicTraitInfos = items;
             notifyDataSetChanged();
         });
         this.context = context;
+        this.viewModel = viewModel;
 
     }
 
@@ -44,7 +48,8 @@ public class BasicInfoElementAdapter extends RecyclerView.Adapter<BasicInfoEleme
     public BasicInfoElementAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.basic_element, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, position -> viewModel
+                .sendChosenBasicTrait(basicTraitInfos.get(position)));
     }
 
     @Override
@@ -71,17 +76,21 @@ public class BasicInfoElementAdapter extends RecyclerView.Adapter<BasicInfoEleme
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private final TextView infoName;
 
         private final ImageView imageView;
 
-        public ViewHolder(@NonNull View itemView) {
+        private final AdapterHelper helper;
+
+        public ViewHolder(@NonNull View itemView, AdapterHelper helper) {
             super(itemView);
 
             infoName = itemView.findViewById(R.id.info_name);
             imageView = itemView.findViewById(R.id.info_representation);
+            imageView.setOnClickListener(this);
+            this.helper = helper;
         }
 
         public TextView getInfoName() {
@@ -91,6 +100,16 @@ public class BasicInfoElementAdapter extends RecyclerView.Adapter<BasicInfoEleme
         public ImageView getImageView() {
             return imageView;
         }
+
+        @Override
+        public void onClick(View v) {
+            helper.chooseTrait(getAdapterPosition());
+        }
+    }
+
+    @FunctionalInterface
+    private interface AdapterHelper {
+        void chooseTrait(int position);
     }
 
 }

@@ -9,4 +9,15 @@
     <string name="error_info">Something went wrong</string>
     <string name="drawablePrefix">\@drawable/</string>
     <string name="choose">Choose</string>
+    <string name="choose_gender_title">Choose gender</string>
+    <string name="connection_info">Problem with internet connection</string>
+    <string name="hero_class_title">Choose hero class</string>
+    <string name="background_title">Choose background</string>
+    <string name="confirm">Confirm</string>
+    <string name="skills_to_allocate">Skills to allocate:</string>
+    <string name="allocate_skills">Allocate skills</string>
+    <string name="label">Provide your name</string>
+    <string name="character_info">The name has to have at least 5 characters</string>
+    <string name="player_identifier">playerIdentifier</string>
+    <string name="loading_info">Game is loading...</string>
 </resources>
