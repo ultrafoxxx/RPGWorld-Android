@@ -20,4 +20,11 @@
     <string name="character_info">The name has to have at least 5 characters</string>
     <string name="player_identifier">playerIdentifier</string>
     <string name="loading_info">Game is loading...</string>
+    <string name="map_label">Map</string>
+    <string name="quests_label">Quests</string>
+    <string name="text_label_1">Info</string>
+    <string name="player_key">player</string>
+    <string name="is_character_creation">isCharacterCreation</string>
+    <string name="skill_points">skillPoints</string>
+    <string name="accept_quest_button">Accept quest</string>
 </resources>

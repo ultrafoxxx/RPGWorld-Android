@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onLoadPlayer(Player player) {
         Intent intent = new Intent(this, GPSActivity.class);
-        intent.putExtra("player", player);
+        intent.putExtra(getString(R.string.player_key), player);
         startActivity(intent);
     }
 
