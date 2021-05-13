@@ -110,6 +110,10 @@ public class GPSActivity extends AppCompatActivity implements OnMapReadyCallback
         compositeDisposable = new CompositeDisposable();
         Disposable disposable = gameViewModel.getQuestFlowable().subscribe(this::onAcceptedQuest);
         compositeDisposable.add(disposable);
+        disposable = gameViewModel.getPlayerFlowable().subscribe(player -> {
+            this.player = player;
+        });
+        compositeDisposable.add(disposable);
         Retrofit retrofit = ApiCaller.getRetrofitClient();
         api = retrofit.create(IGameAPI.class);
         questMarkers = new LinkedList<>();

@@ -44,6 +44,7 @@ public class ApiCaller<T> {
                 .subscribe(onSuccess, onError);
     }
 
+
     public static Retrofit getRetrofitClient(){
         final HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -13,15 +13,13 @@ import io.reactivex.Flowable;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 
-public class CharacterCreationViewModel extends ViewModel {
+public class CharacterCreationViewModel extends CommonViewModel {
 
     private BehaviorSubject<List<BasicTraitInfo>> basicTraitInfoListSubject;
 
     private BehaviorSubject<String> titleSubject;
 
     private PublishSubject<BasicTraitInfo> basicTraitInfoSubject;
-
-    private BehaviorSubject<SkillFragmentInfo> skillListSubject;
 
     public CharacterCreationViewModel(){
         super();
@@ -60,15 +58,4 @@ public class CharacterCreationViewModel extends ViewModel {
         return basicTraitInfoSubject.toFlowable(BackpressureStrategy.BUFFER);
     }
 
-    public void setSkillListSubject(SkillFragmentInfo skills) {
-        skillListSubject = BehaviorSubject.createDefault(skills);
-    }
-
-    public Flowable<SkillFragmentInfo> getSkillListFlowable(){
-        return skillListSubject.toFlowable(BackpressureStrategy.BUFFER);
-    }
-
-    public void updateSkills(SkillFragmentInfo skills){
-        skillListSubject.onNext(skills);
-    }
 }

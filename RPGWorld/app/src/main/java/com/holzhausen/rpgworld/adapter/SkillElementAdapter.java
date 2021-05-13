@@ -14,6 +14,7 @@ import com.holzhausen.rpgworld.R;
 import com.holzhausen.rpgworld.model.Skill;
 import com.holzhausen.rpgworld.util.SkillAdapterHelper;
 import com.holzhausen.rpgworld.viewmodel.CharacterCreationViewModel;
+import com.holzhausen.rpgworld.viewmodel.CommonViewModel;
 
 import java.util.List;
 
@@ -27,13 +28,10 @@ public class SkillElementAdapter extends RecyclerView.Adapter<SkillElementAdapte
 
     private final Context context;
 
-    private final CharacterCreationViewModel viewModel;
+    private final SkillAdapterHelper helper;
 
-    private SkillAdapterHelper helper;
-
-    public SkillElementAdapter(Context context, CharacterCreationViewModel viewModel, SkillAdapterHelper helper) {
+    public SkillElementAdapter(Context context, CommonViewModel viewModel, SkillAdapterHelper helper) {
         this.context = context;
-        this.viewModel = viewModel;
         this.helper = helper;
         disposable = viewModel.getSkillListFlowable().subscribe(skills -> {
             this.skills = skills.getSkills();
@@ -55,7 +53,7 @@ public class SkillElementAdapter extends RecyclerView.Adapter<SkillElementAdapte
         holder.getSkillAmount().setText(String.valueOf(skills.get(position).getSkillAmount()));
         holder.getSeekBar().setProgress(skills.get(position).getSkillAmount());
         holder.getSeekBar().setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            private int oldProgress;
+            private int oldProgress = skills.get(position).getSkillAmount();
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(helper.updateRemainingSkill(oldProgress, progress)){

@@ -19,6 +19,9 @@ public class Player implements Serializable {
     @SerializedName("experiencePoints")
     private int experiencePoints;
 
+    @SerializedName("skillPoints")
+    private int skillPoints;
+
     @SerializedName("skills")
     private List<SkillAmount> skillAmountList;
 
@@ -71,5 +74,13 @@ public class Player implements Serializable {
 
     public void setAttacks(List<Attack> attacks) {
         this.attacks = attacks;
+    }
+
+    public int getSkillPoints() {
+        return skillPoints;
+    }
+
+    public void setSkillPoints(int skillPoints) {
+        this.skillPoints = skillPoints;
     }
 }

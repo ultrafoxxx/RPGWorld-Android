@@ -13,7 +13,7 @@ import io.reactivex.Flowable;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 
-public class GameViewModel extends ViewModel {
+public class GameViewModel extends CommonViewModel {
 
     private BehaviorSubject<List<Quest>> questListSubject;
 
