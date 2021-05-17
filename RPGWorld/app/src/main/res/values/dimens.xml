@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="medium_space_between_elements">15dp</dimen>
+    <dimen name="large_space_between_elements">20dp</dimen>
+    <dimen name="small_space_between_elements">10dp</dimen>
+    <dimen name="space_from_screen_in_dialog">100dp</dimen>
+    <dimen name="minimal_space">5dp</dimen>
+</resources>

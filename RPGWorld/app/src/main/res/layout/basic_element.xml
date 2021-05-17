@@ -10,9 +10,9 @@
         android:id="@+id/info_representation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:padding="15dp"
+        android:layout_marginStart="@dimen/medium_space_between_elements"
+        android:layout_marginTop="@dimen/medium_space_between_elements"
+        android:padding="@dimen/medium_space_between_elements"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />

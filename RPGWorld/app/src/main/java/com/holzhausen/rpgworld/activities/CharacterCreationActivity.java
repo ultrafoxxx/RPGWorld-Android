@@ -67,7 +67,6 @@ public class CharacterCreationActivity extends AppCompatActivity {
                     .beginTransaction()
                     .setReorderingAllowed(true)
                     .add(R.id.fragment_container, LoadingFragment.class, null)
-                    .addToBackStack("basicTraitInfo")
                     .commit();
         }
 
