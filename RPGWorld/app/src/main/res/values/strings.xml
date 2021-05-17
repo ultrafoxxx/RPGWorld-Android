@@ -27,4 +27,8 @@
     <string name="is_character_creation">isCharacterCreation</string>
     <string name="skill_points">skillPoints</string>
     <string name="accept_quest_button">Accept quest</string>
+    <string name="quest_key">quest</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="objective_id">objectiveId</string>
 </resources>

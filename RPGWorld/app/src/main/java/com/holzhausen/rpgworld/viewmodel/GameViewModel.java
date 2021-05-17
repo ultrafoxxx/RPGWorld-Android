@@ -1,8 +1,11 @@
 package com.holzhausen.rpgworld.viewmodel;
 
+import android.app.Dialog;
+
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.holzhausen.rpgworld.model.Message;
 import com.holzhausen.rpgworld.model.Player;
 import com.holzhausen.rpgworld.model.Quest;
 
@@ -22,6 +25,7 @@ public class GameViewModel extends CommonViewModel {
     private BehaviorSubject<Player> playerSubject;
 
     private PublishSubject<Quest> questSubject;
+
 
     public void setQuestListSubject(List<Quest> quests) {
         this.questListSubject = BehaviorSubject.createDefault(quests);
@@ -70,4 +74,6 @@ public class GameViewModel extends CommonViewModel {
     public Flowable<Quest> getQuestFlowable(){
         return questSubject.toFlowable(BackpressureStrategy.BUFFER);
     }
+
+
 }

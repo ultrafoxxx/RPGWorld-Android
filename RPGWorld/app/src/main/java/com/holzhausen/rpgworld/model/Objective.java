@@ -2,7 +2,9 @@ package com.holzhausen.rpgworld.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Objective {
+import java.io.Serializable;
+
+public class Objective implements Serializable {
 
     @SerializedName("id")
     private int id;
@@ -21,6 +23,9 @@ public class Objective {
 
     @SerializedName("order_in_quest")
     private int orderInQuest;
+
+    @SerializedName("npc_player")
+    private NPC npc;
 
     public int getId() {
         return id;
@@ -68,5 +73,13 @@ public class Objective {
 
     public void setOrderInQuest(int orderInQuest) {
         this.orderInQuest = orderInQuest;
+    }
+
+    public NPC getNpc() {
+        return npc;
+    }
+
+    public void setNpc(NPC npc) {
+        this.npc = npc;
     }
 }

@@ -22,11 +22,29 @@ public class Player implements Serializable {
     @SerializedName("skillPoints")
     private int skillPoints;
 
+    @SerializedName("background")
+    private String background;
+
+    @SerializedName("gender")
+    private String gender;
+
+    @SerializedName("hero_class")
+    private String heroClass;
+
     @SerializedName("skills")
     private List<SkillAmount> skillAmountList;
 
     @SerializedName("attacks")
     private List<Attack> attacks;
+
+    public boolean hasTrait(String trait){
+        return background.equals(trait) || gender.equals(trait) || heroClass.equals(trait);
+    }
+
+    public boolean hasEnoughSkill(String skillName, int skillAmount) {
+        return skillAmountList.stream().anyMatch(skill -> skill.getSkillName().equals(skillName)
+                && skill.getSkillAmount() >= skillAmount);
+    }
 
     public String getIdentifier() {
         return identifier;
@@ -82,5 +100,29 @@ public class Player implements Serializable {
 
     public void setSkillPoints(int skillPoints) {
         this.skillPoints = skillPoints;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getHeroClass() {
+        return heroClass;
+    }
+
+    public void setHeroClass(String heroClass) {
+        this.heroClass = heroClass;
     }
 }

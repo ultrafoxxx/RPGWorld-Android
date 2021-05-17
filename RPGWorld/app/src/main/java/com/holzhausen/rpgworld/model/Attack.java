@@ -27,4 +27,9 @@ public class Attack implements Serializable {
     public void setMaxDamage(int maxDamage) {
         this.maxDamage = maxDamage;
     }
+
+    @Override
+    public String toString() {
+        return name + " (" + maxDamage + " HP)";
+    }
 }

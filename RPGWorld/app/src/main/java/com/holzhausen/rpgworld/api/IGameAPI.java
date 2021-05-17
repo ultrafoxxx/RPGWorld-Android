@@ -1,6 +1,8 @@
 package com.holzhausen.rpgworld.api;
 
+import com.holzhausen.rpgworld.model.ObjectiveCompletionResponse;
 import com.holzhausen.rpgworld.model.Player;
+import com.holzhausen.rpgworld.model.PlayerObjective;
 import com.holzhausen.rpgworld.model.PlayerQuest;
 import com.holzhausen.rpgworld.model.Quest;
 import com.holzhausen.rpgworld.model.UpdatePlayerSkill;
@@ -25,5 +27,8 @@ public interface IGameAPI {
 
     @POST(BASIC_URL + "playerskills/update_skills/")
     Observable<Player> assignSkills(@Body UpdatePlayerSkill playerSkill);
+
+    @POST(BASIC_URL + "quests/complete_objective/")
+    Observable<ObjectiveCompletionResponse> completeObjective(@Body PlayerObjective playerObjective);
 
 }

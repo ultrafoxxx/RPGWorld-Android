@@ -2,9 +2,10 @@ package com.holzhausen.rpgworld.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Quest {
+public class Quest implements Serializable {
 
     @SerializedName("id")
     private int questId;
@@ -93,4 +94,5 @@ public class Quest {
     public void setActive(boolean active) {
         isActive = active;
     }
+
 }

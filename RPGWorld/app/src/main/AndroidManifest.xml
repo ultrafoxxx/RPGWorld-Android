@@ -2,28 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.holzhausen.rpgworld">
 
-
-
     <application
         android:allowBackup="true"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RPGWorld"
-        android:fullBackupContent="false"
         android:usesCleartextTraffic="true">
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC5uMK0tUVM-dLtr2cPD5IlKn87v8iHdek" />
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-        <activity android:name=".activities.GPSActivity"></activity>
+        <activity android:name=".activities.ObjectiveActivity"></activity>
+
+        <activity android:name=".activities.GPSActivity" />
         <activity android:name=".activities.CharacterCreationActivity" />
+
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,11 +24,22 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC5uMK0tUVM-dLtr2cPD5IlKn87v8iHdek" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <service
             android:name=".activities.GPSActivity"
             android:foregroundServiceType="location" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
