@@ -31,4 +31,5 @@
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="objective_id">objectiveId</string>
+    <string name="gps_error">GPS is not enabled</string>
 </resources>

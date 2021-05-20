@@ -25,6 +25,9 @@ public class Dialog {
     @SerializedName("is_fight_start")
     private boolean isStartFight;
 
+    @SerializedName("is_last")
+    private boolean isLast;
+
     public String getContent() {
         return content;
     }
@@ -79,5 +82,13 @@ public class Dialog {
 
     public void setStartFight(boolean startFight) {
         isStartFight = startFight;
+    }
+
+    public boolean isLast() {
+        return isLast;
+    }
+
+    public void setLast(boolean last) {
+        isLast = last;
     }
 }

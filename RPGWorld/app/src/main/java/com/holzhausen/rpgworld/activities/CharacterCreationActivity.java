@@ -190,9 +190,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
 
     private void onGetIdentifier(Player player) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if(!sharedPreferences.contains(getString(R.string.player_identifier))){
-            sharedPreferences.edit().putString(getString(R.string.player_identifier), player.getIdentifier()).apply();
-        }
+        sharedPreferences.edit().putString(getString(R.string.player_identifier), player.getIdentifier()).apply();
         Intent intent = new Intent(this, GPSActivity.class);
         intent.putExtra("player", player);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

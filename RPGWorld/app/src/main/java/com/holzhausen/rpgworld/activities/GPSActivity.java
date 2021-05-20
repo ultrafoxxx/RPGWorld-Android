@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.MenuItem;
@@ -100,6 +101,7 @@ public class GPSActivity extends AppCompatActivity implements OnMapReadyCallback
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this::onNavItemSelected);
         mapFragment = SupportMapFragment.newInstance();
+        checkIfGPSEnabled();
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -138,6 +140,14 @@ public class GPSActivity extends AppCompatActivity implements OnMapReadyCallback
         resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 this::onObjectiveCompletion
                         );
+    }
+
+    private void checkIfGPSEnabled(){
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            Toast.makeText(this, getString(R.string.gps_error), Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     private void onObjectiveCompletion(ActivityResult result){

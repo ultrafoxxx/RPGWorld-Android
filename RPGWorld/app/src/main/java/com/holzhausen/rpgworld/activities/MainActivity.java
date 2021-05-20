@@ -96,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        loadButton.setText(R.string.load_game);
+        loadButton.setEnabled(true);
+        startButton.setEnabled(true);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         compositeDisposable.dispose();

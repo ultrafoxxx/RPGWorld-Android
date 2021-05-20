@@ -82,7 +82,7 @@ public class ObjectiveAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
         textView.setText(messages.get(position).getContent());
         textView.setTextColor(messages.get(position).getColor());
-        if(messages.get(position).isLast()){
+        if(messages.get(position).isLast() && !messages.get(position).isDisabled()){
             textView.setOnClickListener(view -> helper.endActivity());
         }
         else if(messages.get(position).isPlayer() && !messages.get(position).isDisabled()){

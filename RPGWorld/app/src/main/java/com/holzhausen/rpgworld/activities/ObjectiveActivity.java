@@ -245,8 +245,6 @@ public class ObjectiveActivity extends AppCompatActivity implements ObjectiveAda
     private List<Message> createMessagesFromDialogs(String lastOrder){
         final String[] lastOrderSplit = lastOrder.split("\\.");
         final int nextOrderFirstPart = Integer.parseInt(lastOrderSplit[0]) + 1;
-        final boolean isNextLast = !dialogs.stream()
-                .anyMatch(dialog -> Integer.parseInt(dialog.getOrder().split("\\.")[0])  > nextOrderFirstPart);
         return dialogs.stream().filter(dialog -> {
             String[] dialogSplit = dialog.getOrder().split("\\.");
             if(dialogSplit.length == 1 && Integer.parseInt(dialogSplit[0]) == nextOrderFirstPart){
@@ -299,7 +297,7 @@ public class ObjectiveActivity extends AppCompatActivity implements ObjectiveAda
                 message.setColor(R.color.black);
             }
             message.setOrder(dialog.getOrder());
-            message.setLast(isNextLast);
+            message.setLast(dialog.isLast());
             return message;
         }).collect(Collectors.toList());
     }

@@ -92,11 +92,11 @@ public class PlayerInfoFragment extends Fragment {
 
     private boolean updateRemainingSkill(int lastProgress, int newProgress){
         int difference = newProgress - lastProgress;
-        if(player.getExperiencePoints() < difference) {
+        if(player.getSkillPoints() < difference) {
             return false;
         }
-        player.setExperiencePoints(player.getExperiencePoints() - difference);
-        skillsToAllocate.setText(String.valueOf(player.getExperiencePoints()));
+        player.setSkillPoints(player.getSkillPoints() - difference);
+        skillsToAllocate.setText(String.valueOf(player.getSkillPoints()));
         allocateSkillsButton.setEnabled(true);
         return true;
     }
